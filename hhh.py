@@ -6,10 +6,18 @@ from sklearn.cross_validation import ShuffleSplit
 
 'exec(%matplotlib inline)'
 
-data = pd.read_csv('housing.csv')
-prices = data['MEDV']
-features = data.drop('MEDV', axis = 1)
-    
+data = pd.read_csv('boston.csv')
+data=data.drop('medv_',axis=1)
+data=data.drop('id',axis=1)
+
+
+data.drop(data[data['medv'] == 1050000].index, inplace=True)
+data.drop(data[data['rm'] == 8.78].index, inplace=True)
+
+
+prices = data['medv']
+features = data.drop('medv', axis = 1)
+
 from sklearn.metrics import r2_score
 
 def performance_metric(y_true, y_predict):
@@ -34,11 +42,21 @@ def fit_model(X, y):
     return grid.best_estimator_
 
 reg = fit_model(X_train, y_train)
-
-v1 = sys.argv[1];
-v2 = sys.argv[2];
-v3 = sys.argv[3];
-client_data = [v1,v2,v3]
+# sys.argv[1];
+v1 = 0.027
+v2 = 13
+v3 = 7.87
+v4 = 0
+v5 = 0.538
+v6 = sys.argv[1]
+v7 = sys.argv[2]
+v8 =sys.argv[3]
+v9 =sys.argv[4]
+v10 = sys.argv[5]
+v11 = sys.argv[6]
+v12 = 390
+v13 = sys.argv[7]
+client_data = [v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13]
 
 price = reg.predict([client_data])
 

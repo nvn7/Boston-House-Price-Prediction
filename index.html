@@ -1,29 +1,38 @@
 <html>
 <head>
-	<title>House Price Prediction</title>
 	<style>
 		#heading{
 			text-align:center;
 		}
 		body {
-			 
-			 background-color: lightblue;
-			
+			 background-image: 
+			 url("https://kaggle2.blob.core.windows.net/competitions/kaggle/5407/media/housesbanner.png");		
 		}
 		#lbl{
 			font-size: 20px;
 			}
+		#head_Container{
+			height:50px;
+			width:565px;
+			border:2px solid ;
+			padding-left:55px;
+			padding-top:1px;
+			margin-left:26%;
+			margin-top:1px;
+			background-color:white;
+			border-radius:12px;
+		}
 		#main_container{
 			height:370px;
 			width: 500px;
 			margin-left:26%;
-			margin-top:2%;
+			margin-top:1%;
 			background-color:white;
 			padding:5%;
+			padding-top:3%;
 			border-radius:12px;
 			border:2px solid ;
 		}
-		
 		#output_container{
 			height:50px;
 			width:565px;
@@ -34,6 +43,16 @@
 			margin-top:5px;
 			background-color:white;
 			border-radius:12px;
+		}
+		#outputBox{
+			margin-top:25px;
+			padding-top:5px;
+			font-size:22px;
+			font-weight:bold;
+		}
+		#heading{
+			padding-left:12%;
+			font-size:40px;
 		}
 		.button {
 			background-color: #4CAF50; /* Green */
@@ -71,7 +90,11 @@
 			var ip1 = document.getElementById("input1").value;
 			var ip2 = document.getElementById("input2").value;
 			var ip3 = document.getElementById("input3").value;
-			var url = "http://localhost:8080/index/?text1="+ip1+"&text2="+ip2+"&text3="+ip3;
+			var ip4 = document.getElementById("input4").value;
+			var ip5 = document.getElementById("input5").value;
+			var ip6 = document.getElementById("input6").value;
+			var ip7 = document.getElementById("input7").value;
+			var url = "http://localhost:8080/index/?text1="+ip1+"&text2="+ip2+"&text3="+ip3+"&text4="+ip4+"&text5="+ip5+"&text6="+ip6+"&text7="+ip7;
 			const http = new XMLHttpRequest()
 			http.open("GET",url)
 			http.send()
@@ -80,7 +103,9 @@
 	</script>
 </head>
 <body>
-	<h1 id="heading">House Price Prediction</h1>
+	<div class='container' id='head_container'>
+		<label id="heading">House Price Prediction</label>
+	</div>
 	<div class='container' id='main_container'>
 		
 		
@@ -92,42 +117,42 @@
 		<label id='lbl'>number of rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="number" id="input2"/><br><br>
+		<input type="number" id="input1"/><br><br>
 		
 		<label id='lbl'>Age of House</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="number" id="input3"/><br><br>
+		<input type="number" id="input2"/><br><br>
 		
 		<label id='lbl'>distances to five employment centres</label>&nbsp;&nbsp;&nbsp;
 											   &nbsp;
 											   
-		<input type="number" id="input1"/><br><br>
+		<input type="number" id="input3"/><br><br>
 		
 		<label id='lbl'>accessibility to radial highways</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   
-		<input type="number" id="input2"/><br><br>
+		<input type="number" id="input4"/><br><br>
 		
 		<label id='lbl'>full-value property-tax rate</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="number" id="input3"/><br><br>
+		<input type="number" id="input5"/><br><br>
 		
 		<label id='lbl'>pupil-teacher ratio by town</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   
-		<input type="number" id="input1"/><br><br>
+		<input type="number" id="input6"/><br><br>
 		
 		<label id='lbl'>lower status of the population</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											   &nbsp;&nbsp;&nbsp;
 											   
-		<input type="number" id="input2"/><br><br>
+		<input type="number" id="input7"/><br><br>
 		
 		<button onclick="compute()" class='button button3'>Find Price!</button>
 		<p id="outputBox"></p>
 	</div>
 	<div class="Container" id='output_container'>
-		<h3>You can see your Output Here...!</h3>
+		<p id="outputBox"></p>
 	</div>
 </body>
 </html>
