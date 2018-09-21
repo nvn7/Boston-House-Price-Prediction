@@ -1,9 +1,9 @@
 # Boston-House-Price-Prediction
 By Naveen Kumar M and Umapathi C for CIP Project
 
-  1)index.html is our User Interface for our Project desingned using html,css,js.
-  2)myui.js is our backend nodejs code which connects index.html and model.py.
-  3)model.py is our Machine Learning code using Python.
+  1) index.html is our User Interface for our Project desingned using html,css,js.
+  2) myui.js is our backend nodejs code which connects index.html and model.py.
+  3) model.py is our Machine Learning code using Python.
 
 To Run our Project :
   1) Clone the repository.
