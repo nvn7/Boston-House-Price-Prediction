@@ -1,0 +1,131 @@
+<html>
+<head>
+	<style>
+		#heading{
+			text-align:center;
+		}
+		body {
+			 
+			 background-color: lightblue;
+			
+		}
+		#lbl{
+			font-size: 20px;
+			}
+		#main_container{
+			height:370px;
+			width: 500px;
+			margin-left:26%;
+			margin-top:2%;
+			background-color:white;
+			padding:5%;
+			border-radius:12px;
+			border:2px solid ;
+		}
+		#output_container{
+			height:50px;
+			width:565px;
+			border:2px solid ;
+			padding-left:55px;
+			padding-top:5px;
+			margin-left:26%;
+			margin-top:5px;
+			background-color:white;
+			border-radius:12px;
+		}
+		.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+
+		
+		.button3 {border-radius: 8px;
+					margin-left:34%;
+					margin-top:5%;
+		}
+		
+
+		#but{
+			margin-left:30%;
+			margin-top:5%;
+			height:35px;
+			width:100px;
+			
+		}
+	</style>
+	
+	
+	
+	<script>
+		function compute(){
+			var ip1 = document.getElementById("input1").value;
+			var ip2 = document.getElementById("input2").value;
+			var ip3 = document.getElementById("input3").value;
+			var url = "http://localhost:8080/index/?text1="+ip1+"&text2="+ip2+"&text3="+ip3;
+			const http = new XMLHttpRequest()
+			http.open("GET",url)
+			http.send()
+			http.onload = () => document.getElementById("outputBox").innerHTML = http.responseText
+		}
+	</script>
+</head>
+<body>
+	<h1 id="heading">House Price Prediction</h1>
+	<div class='container' id='main_container'>
+		
+		
+		<label id='lbl'>Street Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<select><option>Lane 1</option><option>Lane 2</option><option>Lane 3</option></select><br><br>
+		
+		<label id='lbl'>number of rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="number" id="input2"/><br><br>
+		
+		<label id='lbl'>Age of House</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="number" id="input3"/><br><br>
+		
+		<label id='lbl'>distances to five employment centres</label>&nbsp;&nbsp;&nbsp;
+											   &nbsp;
+											   
+		<input type="number" id="input1"/><br><br>
+		
+		<label id='lbl'>accessibility to radial highways</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   
+		<input type="number" id="input2"/><br><br>
+		
+		<label id='lbl'>full-value property-tax rate</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="number" id="input3"/><br><br>
+		
+		<label id='lbl'>pupil-teacher ratio by town</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   
+		<input type="number" id="input1"/><br><br>
+		
+		<label id='lbl'>lower status of the population</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											   &nbsp;&nbsp;&nbsp;
+											   
+		<input type="number" id="input2"/><br><br>
+		
+		<button onclick="compute()" class='button button3'>Find Price!</button>
+		<p id="outputBox"></p>
+	</div>
+	<div class="Container" id='output_container'>
+		<h3>You can see your Output Here...!</h3>
+	</div>
+</body>
+</html>
