@@ -23,13 +23,13 @@
 			border-radius:12px;
 		}
 		#main_container{
-			height:370px;
+			height:385px;
 			width: 500px;
 			margin-left:26%;
 			margin-top:1%;
 			background-color:white;
 			padding:5%;
-			padding-top:3%;
+			padding-top:1%;
 			border-radius:12px;
 			border:2px solid ;
 		}
@@ -55,32 +55,114 @@
 			font-size:40px;
 		}
 		.button {
-			background-color: #4CAF50; /* Green */
-			border: none;
-			color: white;
-			padding: 15px 32px;
+			display: inline-block;
+			padding: 15px 25px;
+			font-size: 24px;
+			cursor: pointer;
 			text-align: center;
 			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 4px 2px;
-			cursor: pointer;
+			outline: none;
+			color: #fff;
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 15px;
+			box-shadow: 0 9px #999;
 		}
 
+		.button:hover {background-color: #3e8e41}
+
+		.button:active {
+			background-color: #3e8e41;
+			box-shadow: 0 5px #666;
+			transform: translateY(4px);
+		}
+		
 		
 		.button3 {border-radius: 8px;
 					margin-left:34%;
-					margin-top:5%;
+					margin-top:2%;
 		}
 		
 
+		
 		#but{
 			margin-left:30%;
 			margin-top:5%;
-			height:35px;
+			height:30px;
 			width:100px;
 			
 		}
+		#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 20px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 20px solid lightgreen;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+.col-25 {
+    float: left;
+    width: 35%;
+    margin-top: 3px;
+}
+
+.col-75 {
+    float: left;
+    width: 65%;
+    margin-top: 3px;
+}
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+
+input[type=number]{
+    width: 100%;
+	height: 20px;
+    padding: 10px;
+    border: 2px solid green;
+    border-radius: 5px;
+    resize: vertical;
+}
+
 	</style>
 	
 	
@@ -98,7 +180,15 @@
 			const http = new XMLHttpRequest()
 			http.open("GET",url)
 			http.send()
+			
 			http.onload = () => document.getElementById("outputBox").innerHTML = http.responseText
+			document.getElementById("loader").style.display = "block";
+			myVar = setTimeout(showPage, 3000);
+			
+		}
+		function showPage() {
+			document.getElementById("loader").style.display = "none";
+			document.getElementById("output_container").style.display = "block";
 		}
 	</script>
 </head>
@@ -109,49 +199,78 @@
 	<div class='container' id='main_container'>
 		
 		
-		<label id='lbl'>Street Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label id='lbl'>Street Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<select><option>Lane 1</option><option>Lane 2</option><option>Lane 3</option></select><br><br>
-		
-		<label id='lbl'>number of rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Number of rooms</label>
+		</div>
+		<div class="col-25">
 		<input type="number" id="input1"/><br><br>
-		
-		<label id='lbl'>Age of House</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Age of House</label>
+		</div>
+		<div class="col-25">
 		<input type="number" id="input2"/><br><br>
+		</div>
+		</div>
 		
-		<label id='lbl'>distances to five employment centres</label>&nbsp;&nbsp;&nbsp;
-											   &nbsp;
-											   
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Distances to five employment centres</label>
+		</div>
+		<div class="col-25">
 		<input type="number" id="input3"/><br><br>
+		</div>
+		</div>
 		
-		<label id='lbl'>accessibility to radial highways</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Accessibility to radial highways</label>
+		</div>
+		<div class="col-25">									   
 		<input type="number" id="input4"/><br><br>
+		</div>
+		</div>
 		
-		<label id='lbl'>full-value property-tax rate</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Full-value property-tax rate</label>
+		</div>
+		<div class="col-25">
 		<input type="number" id="input5"/><br><br>
+		</div>
+		</div>
 		
-		<label id='lbl'>pupil-teacher ratio by town</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Pupil-teacher ratio by town</label>
+		</div>
+		<div class="col-25">									   
 		<input type="number" id="input6"/><br><br>
+		</div>
+		</div>
 		
-		<label id='lbl'>lower status of the population</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											   &nbsp;&nbsp;&nbsp;
-											   
+		<div class="row">
+		<div class="col-75">
+		<label id='lbl'>Lower status of the population</label>
+		</div>
+		<div class="col-25">						   
 		<input type="number" id="input7"/><br><br>
+		</div>
+		</div>
+		
 		
 		<button onclick="compute()" class='button button3'>Find Price!</button>
 		<p id="outputBox"></p>
 	</div>
-	<div class="Container" id='output_container'>
+	<div id="loader" style="display:none"></div>
+	<div class="Container" id='output_container' style='display:none'>
 		<p id="outputBox"></p>
 	</div>
 </body>
