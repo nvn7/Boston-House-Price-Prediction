@@ -4,6 +4,7 @@ By Naveen Kumar M and Umapathi C for CIP Project
   1) index.html is our User Interface for our Project desingned using html,css,js.
   2) myui.js is our backend nodejs code which connects index.html and model.py.
   3) model.py is our Machine Learning code using Python.
+  4) If you need detailed Information about our Project, Please refer our documentation and ppt in the report folder.
 
 To Run our Project :
   1) Clone the repository.
