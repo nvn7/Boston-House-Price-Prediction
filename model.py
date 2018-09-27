@@ -42,19 +42,19 @@ def fit_model(X, y):
     return grid.best_estimator_
 
 reg = fit_model(X_train, y_train)
-# sys.argv[1];
-v1 = 0.027
-v2 = 13
-v3 = 7.87
-v4 = 0
-v5 = 0.538
+
+v1 = sys.argv[8]
+v2 = sys.argv[9]
+v3 = sys.argv[10]
+v4 = sys.argv[11]
+v5 = sys.argv[12]
 v6 = sys.argv[1]
 v7 = sys.argv[2]
 v8 =sys.argv[3]
 v9 =sys.argv[4]
 v10 = sys.argv[5]
 v11 = sys.argv[6]
-v12 = 390
+v12 = sys.argv[13]
 v13 = sys.argv[7]
 client_data = [v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13]
 

@@ -169,6 +169,7 @@ input[type=number]{
 	
 	<script>
 		function compute(){
+			var lane = document.getElementById("lane_id").value;
 			var ip1 = document.getElementById("input1").value;
 			var ip2 = document.getElementById("input2").value;
 			var ip3 = document.getElementById("input3").value;
@@ -176,7 +177,16 @@ input[type=number]{
 			var ip5 = document.getElementById("input5").value;
 			var ip6 = document.getElementById("input6").value;
 			var ip7 = document.getElementById("input7").value;
-			var url = "http://localhost:8080/index/?text1="+ip1+"&text2="+ip2+"&text3="+ip3+"&text4="+ip4+"&text5="+ip5+"&text6="+ip6+"&text7="+ip7;
+			if(lane=='1'){
+				var v1_value=0.027;var v2_value=0;var v3_value=3.22;var v4_value=0;var v5_value=0.520;var v12_value=20;
+			}
+			else if(lane=='2'){
+				var v1_value=33.027;var v2_value=40;var v3_value=7.33;var v4_value=1;var v5_value=0.123;var v12_value=104;
+			}
+			else{
+				var v1_value=69.027;var v2_value=99;var v3_value=18;var v4_value=0;var v5_value=0.933;var v12_value=300;
+			}
+			var url = "http://localhost:8080/index/?text1="+ip1+"&text2="+ip2+"&text3="+ip3+"&text4="+ip4+"&text5="+ip5+"&text6="+ip6+"&text7="+ip7+"&text8="+v1_value+"&text9="+v2_value+"&text10="+v3_value+"&text11="+v4_value+"&text12="+v5_value+"&text13="+v12_value;
 			const http = new XMLHttpRequest()
 			http.open("GET",url)
 			http.send()
@@ -202,7 +212,9 @@ input[type=number]{
 		<label id='lbl'>Street Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<select><option>Lane 1</option><option>Lane 2</option><option>Lane 3</option></select><br><br>
+		<select id="lane_id"><option value='1'>Lane 1</option>
+		<option value='2'>Lane 2</option>
+		<option value='3'>Lane 3</option></select><br><br>
 		<div class="row">
 		<div class="col-75">
 		<label id='lbl'>Number of rooms</label>

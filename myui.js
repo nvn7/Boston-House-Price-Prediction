@@ -21,7 +21,7 @@ const server = http.createServer(function(request, response) {
 		else{
 			const spawn = require("child_process").spawn;
 			console.log( process.env.PATH );
-			const pythonProcess = spawn('python',["./model.py",q.query.text1,q.query.text2,q.query.text3,q.query.text4,q.query.text5,q.query.text6,q.query.text7]).on('error', function( err ){ throw err });
+			const pythonProcess = spawn('python',["./model.py",q.query.text1,q.query.text2,q.query.text3,q.query.text4,q.query.text5,q.query.text6,q.query.text7,q.query.text8,q.query.text9,q.query.text10,q.query.text11,q.query.text12,q.query.text13]).on('error', function( err ){ throw err });
 			response.writeHeader(200);
 			pythonProcess.stdout.on('data', (data) => {
 				response.write(data);
