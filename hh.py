@@ -1,21 +1,29 @@
 import numpy as np
 import sys
 import pandas as pd
-import visuals as vs # Supplementary code
+import visuals as vs 
 from sklearn.cross_validation import ShuffleSplit
 
 'exec(%matplotlib inline)'
 
 
 
-data = pd.read_csv('housing.csv')
-prices = data['MEDV']
-features = data.drop('MEDV', axis = 1)
+data = pd.read_csv('boston.csv')
+data=data.drop('medv_',axis=1)
+data=data.drop('id',axis=1)
+
+
+
+
+
+
+prices = data['medv']
+features = data.drop('medv', axis = 1)
     
 
 print ('Boston housing dataset has {0} data points with {1} variables each'.format(*data.shape))
 
-
+#preprocessing
 
 minimum_price = np.min(prices)
 
@@ -26,6 +34,13 @@ mean_price = np.mean(prices)
 median_price = np.median(prices)
 
 std_price = np.std(prices)
+#preprocessing of medv
+first_quartile = np.percentile(prices, 25)
+third_quartile = np.percentile(prices, 75)
+inter_quartile = third_quartile - first_quartile
+
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
 
 print ("Statistics for Boston housing dataset:\n")
 print ("Minimum price: ${:,.2f}".format(minimum_price))
@@ -33,18 +48,65 @@ print ("Maximum price: ${:,.2f}".format(maximum_price))
 print ("Mean price: ${:,.2f}".format(mean_price))
 print ("Median price ${:,.2f}".format(median_price))
 print ("Standard deviation of prices: ${:,.2f}".format(std_price))
+print ("First quartile of prices: ${:,.2f}".format(first_quartile))
+print ("Second quartile of prices: ${:,.2f}".format(third_quartile))
+print ("Interquartile (IQR) of prices: ${:,.2f}".format(inter_quartile))
+print ("First quartile of prices: ${:,.2f}".format(first_quartile))
+print ("Second quartile of prices: ${:,.2f}".format(third_quartile))
+print ("Interquartile (IQR) of prices: ${:,.2f}".format(inter_quartile))
+print ("Lower Outlier value: ${:,.2f}".format(lo))
+print ("Higher Outlier value: ${:,.2f}".format(ho))
+
+data.drop(data[data['medv'] > ho ].index, inplace=True)
+#preprocessing of rm
+rm = data['rm']
+first_quartile = np.percentile(rm, 25)
+third_quartile = np.percentile(rm, 75)
+inter_quartile = third_quartile - first_quartile
+
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+print ("Lower Outlier value of rm: ${:,.2f}".format(lo))
+print ("Higher Outlier value of rm: ${:,.2f}".format(ho))
+
+data.drop(data[data['rm'] >= ho].index, inplace=True)
+
+#preprocessing of lstat
+lstat = data['lstat']
+first_quartile = np.percentile(lstat, 25)
+third_quartile = np.percentile(lstat, 75)
+inter_quartile = third_quartile - first_quartile
+
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+print ("Lower Outlier value of lstat: ${:,.2f}".format(lo))
+print ("Higher Outlier value of lstat: ${:,.2f}".format(ho))
+
+data.drop(data[data['lstat'] >= ho].index, inplace=True)
 
 
-data.drop(data[data['medv'] >= 1050000].index, inplace=True)
-data.drop(data[data['rm'] >= 8.70].index, inplace=True)
+#preprocessing of nox
+nox = data['nox']
+first_quartile = np.percentile(nox, 25)
+third_quartile = np.percentile(nox, 75)
+inter_quartile = third_quartile - first_quartile
 
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+print ("Lower Outlier value of nox: ${:,.2f}".format(lo))
+print ("Higher Outlier value of nox: ${:,.2f}".format(ho))
+
+data.drop(data[data['nox'] >= ho].index, inplace=True)
+
+prices = data['medv']
+features = data.drop('medv', axis = 1)
 
 import matplotlib.pyplot as plt
 plt.figure(figsize=(20, 5))
 
 
 for i, col in enumerate(features.columns):
-    plt.subplot(1, 3, i+1)
+    plt.subplot(1, 14, i+1)
     x = data[col]
     y = prices
     plt.plot(x, y, 'o')
@@ -98,11 +160,21 @@ reg.get_params()['max_depth']
 
 
 
-v1 = sys.argv[1];
-v2 = sys.argv[2];
-v3 = sys.argv[3];
-client_data = [v1,v2,v3]
+v1 = sys.argv[8]
+v2 = sys.argv[9]
+v3 = sys.argv[10]
+v4 = sys.argv[11]
+v5 = sys.argv[12]
+v6 = sys.argv[1]
+v7 = sys.argv[2]
+v8 =sys.argv[3]
+v9 =sys.argv[4]
+v10 = sys.argv[5]
+v11 = sys.argv[6]
+v12 = sys.argv[13]
+v13 = sys.argv[7]
+client_data = [v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13]
 
 price = reg.predict([client_data])
 
-print("Predicted Selling Price of a house is : $ %.2f"%price)
+print("Predicted Selling Price of your house is : $ %.2f"%price)

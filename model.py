@@ -1,7 +1,7 @@
 import numpy as np
 import sys
 import pandas as pd
-import visuals as vs # Supplementary code
+import visuals as vs 
 from sklearn.cross_validation import ShuffleSplit
 
 'exec(%matplotlib inline)'
@@ -10,10 +10,51 @@ data = pd.read_csv('boston.csv')
 data=data.drop('medv_',axis=1)
 data=data.drop('id',axis=1)
 
+prices = data['medv']
+features = data.drop('medv', axis = 1)
 
-data.drop(data[data['medv'] == 1050000].index, inplace=True)
-data.drop(data[data['rm'] == 8.78].index, inplace=True)
+#preprocessing_start
 
+#preprocessing of medv
+first_quartile = np.percentile(prices, 25)
+third_quartile = np.percentile(prices, 75)
+inter_quartile = third_quartile - first_quartile
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+
+data.drop(data[data['medv'] > ho ].index, inplace=True)
+
+#preprocessing of rm
+rm = data['rm']
+first_quartile = np.percentile(rm, 25)
+third_quartile = np.percentile(rm, 75)
+inter_quartile = third_quartile - first_quartile
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+
+data.drop(data[data['rm'] >= ho].index, inplace=True)
+
+#preprocessing of lstat
+lstat = data['lstat']
+first_quartile = np.percentile(lstat, 25)
+third_quartile = np.percentile(lstat, 75)
+inter_quartile = third_quartile - first_quartile
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+
+data.drop(data[data['lstat'] >= ho].index, inplace=True)
+
+#preprocessing of nox
+nox = data['nox']
+first_quartile = np.percentile(nox, 25)
+third_quartile = np.percentile(nox, 75)
+inter_quartile = third_quartile - first_quartile
+lo = first_quartile - (1.5 * inter_quartile)
+ho = third_quartile + (1.5 * inter_quartile)
+
+data.drop(data[data['nox'] >= ho].index, inplace=True)
+
+#preprocessing_end
 
 prices = data['medv']
 features = data.drop('medv', axis = 1)
@@ -27,6 +68,8 @@ def performance_metric(y_true, y_predict):
 from sklearn.cross_validation import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(features, prices, test_size=0.2, random_state=10)
+
+
 
 from sklearn.metrics import make_scorer
 from sklearn.tree import DecisionTreeRegressor
@@ -42,6 +85,8 @@ def fit_model(X, y):
     return grid.best_estimator_
 
 reg = fit_model(X_train, y_train)
+
+
 
 v1 = sys.argv[8]
 v2 = sys.argv[9]

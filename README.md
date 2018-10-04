@@ -14,6 +14,7 @@ To Run our Project :
       2. pip install pandas
       3. pip install sklearn
       4. pip install matplotlib
+      5. pip install scipy
   4) NOTE : Before Executing the above command , make sure your system have proper installation of Python and node.
   5) Then type node myui in your terminal.
   6) After Executing node myui open your browser and go to http://localhost:8080/ 
