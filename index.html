@@ -93,75 +93,75 @@
 			
 		}
 		#loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 20px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 20px solid lightgreen;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			z-index: 1;
+			width: 150px;
+			height: 150px;
+			margin: -75px 0 0 -75px;
+			border: 20px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 20px solid lightgreen;
+			width: 120px;
+			height: 120px;
+			-webkit-animation: spin 2s linear infinite;
+			animation: spin 2s linear infinite;
+		}
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
+		@-webkit-keyframes spin {
+			0% { -webkit-transform: rotate(0deg); }
+			100% { -webkit-transform: rotate(360deg); }
+		}
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
-
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
-}
-
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
-
-#myDiv {
-  display: none;
-  text-align: center;
-}
-.col-25 {
-    float: left;
-    width: 35%;
-    margin-top: 3px;
-}
-
-.col-75 {
-    float: left;
-    width: 65%;
-    margin-top: 3px;
-}
-@media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-    }
-}
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
 
 
-input[type=number]{
-    width: 100%;
-	height: 20px;
-    padding: 10px;
-    border: 2px solid green;
-    border-radius: 5px;
-    resize: vertical;
-}
+
+		@-webkit-keyframes animatebottom {
+			from { bottom:-100px; opacity:0 } 
+			to { bottom:0px; opacity:1 }
+		}
+
+		@keyframes animatebottom { 
+			from{ bottom:-100px; opacity:0 } 
+			to{ bottom:0; opacity:1 }
+		}
+
+		#myDiv {
+			display: none;
+			text-align: center;
+		}
+		.col-25 {
+			float: left;
+			width: 35%;
+			margin-top: 3px;
+		}
+
+		.col-75 {
+			float: left;
+			width: 65%;
+			margin-top: 3px;
+		}
+		@media screen and (max-width: 600px) {
+			.col-25, .col-75, input[type=submit] {
+			width: 100%;
+			margin-top: 0;
+			}
+		}
+
+
+		input[type=number]{
+			width: 100%;
+			height: 20px;
+			padding: 10px;
+			border: 2px solid green;
+			border-radius: 5px;
+			resize: vertical;
+		}
 
 	</style>
 	
@@ -234,7 +234,7 @@ input[type=number]{
 		
 		<div class="row">
 		<div class="col-75">
-		<label id='lbl'>Distances to five employment centres</label>
+		<label id='lbl'>Distances to employment centres</label>
 		</div>
 		<div class="col-25">
 		<input type="number" id="input3"/><br><br>
@@ -280,10 +280,10 @@ input[type=number]{
 		
 		<button onclick="compute()" class='button button3'>Find Price!</button>
 		<p id="outputBox"></p>
-	</div>
-	<div id="loader" style="display:none"></div>
-	<div class="Container" id='output_container' style='display:none'>
-		<p id="outputBox"></p>
-	</div>
+		</div>
+		<div id="loader" style="display:none"></div>
+		<div class="Container" id='output_container' style='display:none'>
+			<p id="outputBox"></p>
+		</div>
 </body>
 </html>
